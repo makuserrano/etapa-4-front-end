@@ -1,30 +1,26 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import Backgroundsecond from "../componets/Backgroundsecond";
 import Card from "../componets/Card";
+import useTitulo from "../hooks/useTitulo";
 import Main from "../componets/Main";
+import ProductosContext from "../context/ProductosContext";
+
 import "./Inicio.scss";
 
 const Inicio = () => {
-  const [cardsData, setCardsData] = useState([]);
+  const { productos } = useContext(ProductosContext);
+  ProductosContext;
+  //console.log(productos)
 
-  useEffect(() => {
-    fetch("http://localhost:8080/productos")
-      .then((response) => response.json())
-      .then((data) => setCardsData(data))
-      .catch((error) => console.error("Error fetching data: ", error));
-  });
+  useTitulo("Inicio");
   return (
     <>
       <Main />
-      <div className="cards-container" id="container-cards">
-        {cardsData.map((card) => (
-          <Card
-            key={card.id}
-            foto={card.foto}
-            nombre={card.nombre}
-            descripcion={card.descripcion}
-          />
-        ))}
+      <div className="cards-container" id="contenedor-cards">
+        {productos &&
+          productos.map((producto) => (
+            <Card key={producto.id} producto={producto} />
+          ))}
       </div>
       <Backgroundsecond />
     </>

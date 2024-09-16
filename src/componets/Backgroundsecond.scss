@@ -1,0 +1,38 @@
+.second-background{
+    margin-top: -1rem;
+    background-color: black;
+    width: 100%;
+    position: relative;
+  
+    &__img{
+      width: 100%;
+      height: 25rem;
+      object-fit: cover;
+      transition: opacity 0.3s ease; 
+      &:hover{
+        opacity: .3 
+      }
+    }
+    &__h3{
+      color:#f1f2f3;
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  
+    }
+  }
+
+
+  @media (max-width: 576px) {
+    .second-background {
+      &__img {
+        height: 20rem;
+      }
+  
+      &__h3 {
+        top: 60%;
+        width: 90%;
+      }
+    }
+  }  

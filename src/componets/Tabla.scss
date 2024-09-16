@@ -1,16 +1,105 @@
+/* Estilos generales de la tabla */
+$form-background: #ffffff;
+$form-border: #cccccc;
+$form-shadow: rgba(0, 0, 0, 0.1);
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$input-padding: 0.75rem;
+
 table.tabla-alta {
-    border-collapse: collapse;
-    width: 95%;
-    margin: 1rem auto;
-        background-color: #f2f2f2;
+  border-collapse: collapse;
+  width: 100%; /* Asegura que la tabla ocupe el ancho completo del contenedor */
+  margin: 1rem auto;
+  border: 1px solid $form-border;
+  box-shadow: 0 2px 4px $form-shadow;
 
-    th, td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
+  background-color: $form-background;
 
-    th {
-        background-color: #f2f2f2;
-    }
+  overflow-x: auto; /* Permite el desplazamiento horizontal */
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    white-space: nowrap; /* Previene el ajuste de texto */
+  }
+
+  th {
+    background-color: $form-background;
+  }
+
+  /* Estilos específicos para la fila de la tabla */
+  .img-row {
+    width: 50px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    height: auto;
+  }
+
+  /* Estilos para los botones */
+  button {
+    background-color: $primary-color;
+    color: #ffffff;
+    border-radius: 4px;
+    border: none;
+    padding: 5px 10px;
+    margin: 2px;
+    padding: $input-padding 1.5rem;
+
+    cursor: pointer;
+    color: black;
+    &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+  
+      &:last-of-type {
+        background-color: $secondary-color;
+  
+        &:hover {
+          background-color: darken($secondary-color, 10%);
+        }
+      }
+  }
+
+  
+}
+
+/* Estilos para hacer la tabla responsive */
+@media (max-width: 768px) {
+  table.tabla-alta {
+    display: block; /* Permite el desplazamiento horizontal */
+    width: 90%; /* Asegura que la tabla ocupe el ancho completo del contenedor */
+  }
+
+  thead {
+    display: none; /* Oculta el encabezado de la tabla en pantallas pequeñas */
+  }
+
+  tbody,
+  tr {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  td {
+    display: block;
+    text-align: right;
+    position: relative;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #ddd; /* Añade una línea inferior para separar las filas */
+    white-space: normal; /* Permite que el texto se ajuste */
+  }
+
+  td::before {
+    content: attr(
+      data-label
+    ); /* Usa el atributo data-label para mostrar el nombre de la columna */
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-left: 10px;
+    font-weight: bold;
+    background: #f2f2f2; /* Asegura que el fondo sea visible detrás del texto */
+  }
 }

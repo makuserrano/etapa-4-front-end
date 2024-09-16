@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
+import "./Formulario.scss"
 import ProductosContext from "../context/ProductosContext";
+
 const Formulario = () => {
   const formInit = {
     id: null,
@@ -23,32 +25,39 @@ const Formulario = () => {
   } = useContext(ProductosContext);
 
   useEffect(() => {
-    productoAEditar ? setForm(productoAEditar) : setForm(formInit);
+    setForm(productoAEditar || formInit);
   }, [productoAEditar]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("handleSubmit");
+
+    // Validaciones básicas
+    if (!form.nombre || !form.precio || !form.stock || !form.marca || !form.categoria || !form.detalles) {
+      alert("Por favor, complete todos los campos requeridos.");
+      return;
+    }
+
+    if (isNaN(form.precio) || isNaN(form.stock)) {
+      alert("El precio y el stock deben ser números.");
+      return;
+    }
 
     try {
       if (form.id === null) {
-        console.log("Creando un producto");
         await crearProductoContext(form);
+        alert("Producto creado con éxito");
       } else {
-        console.log("Actualizando producto");
         await actualizarProductoContext(form);
+        alert("Producto actualizado con éxito");
       }
       handleReset();
     } catch (error) {
       console.error("[handleSubmit]", error);
+      alert("Ocurrió un error al guardar el producto.");
     }
   };
 
   const handleChange = (e) => {
-    //console.log(e.target.name)
-    //console.log(e.target.value)
-    //console.log(e.target.checked)
-    //console.log(e.target.type)
     const { type, name, checked, value } = e.target;
 
     setForm({
@@ -58,16 +67,15 @@ const Formulario = () => {
   };
 
   const handleReset = () => {
-    console.log("handleReset");
     setForm(formInit);
     setProductoAEditar(null);
   };
 
   return (
     <>
-      <h3>Agregar : Editar</h3>
+      <h3 className="form-h3">{form.id === null ? "Agregar Producto" : "Editar Producto"}</h3>
 
-      <form onSubmit={handleSubmit}>
+      <form className="formulario" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="lbl-nombre">Nombre</label>
           <input
@@ -149,7 +157,7 @@ const Formulario = () => {
           />
         </div>
 
-        <button type="submit">Guardar</button>
+        <button type="submit">{form.id === null ? "Guardar" : "Actualizar"}</button>
         <button type="reset" onClick={handleReset}>
           Limpiar
         </button>

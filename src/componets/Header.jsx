@@ -5,7 +5,6 @@ const Header = () => {
     <>
       <header className="main-header">
        
-        <input type="checkbox" id="menu" />
        <Searchbar/>
       </header>
     </>

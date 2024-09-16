@@ -8,7 +8,8 @@ html, body {
   display: flex;
   flex-direction: column;
 }
-; /* Ajusta los colores a tu estilo */
+
+/* Ajusta los colores a tu estilo */
 .footer {
   color: white;
   padding: 20px;
@@ -22,6 +23,12 @@ html, body {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .footer-logo img {

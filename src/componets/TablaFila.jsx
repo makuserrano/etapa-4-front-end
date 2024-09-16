@@ -1,17 +1,23 @@
-import { useContext } from 'react'
-import './TablaFila.scss'
-import ProductosContext from '../context/ProductosContext'
+import { useContext } from 'react';
+import './TablaFila.scss';
+import ProductosContext from '../context/ProductosContext';
 
-const TablaFila = ( { producto }) => {
+const TablaFila = ({ producto }) => {
 
-  const { setProductoAEditar } = useContext(ProductosContext)
-  
-  //console.log(producto)
+  const { setProductoAEditar, eliminarProductoContext } = useContext(ProductosContext);
+
+  // Editar producto
   const handleEditar = (producto) => {
-    console.log('Producto a editar...', producto.id)
-    setProductoAEditar(producto)
-  }
-  
+    console.log('Producto a editar...', producto.id);
+    setProductoAEditar(producto);
+  };
+
+  // Eliminar producto
+  const handleEliminar = (id) => {
+    console.log('Producto a eliminar...', id);
+    eliminarProductoContext(id);
+  };
+
   return (
     <tr>
       <td>{producto.nombre}</td>
@@ -26,10 +32,10 @@ const TablaFila = ( { producto }) => {
       <td>{producto.envio ? 'SI' : 'NO'}</td>
       <td>
         <button onClick={() => handleEditar(producto)}>Editar</button>
-        <button>Borrar</button>
+        <button onClick={() => handleEliminar(producto.id)}>Eliminar</button>
       </td>
     </tr>
-  )
-}
+  );
+};
 
-export default TablaFila
+export default TablaFila;

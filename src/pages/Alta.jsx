@@ -1,6 +1,7 @@
 import useTitulo from '../hooks/useTitulo'
 import Formulario from '../componets/Formulario'
 import Tabla from '../componets/Tabla'
+import './Alta.scss'
 
 const Alta = () => {
 
@@ -8,8 +9,8 @@ const Alta = () => {
   
   return (
     <>
-      <h1>Formulario de alta de productos</h1>
-      <h2>Agregar producto</h2>
+      <h1 className='h1-alta'>Formulario de alta de productos</h1>
+      
       <Formulario />
   
       <Tabla />

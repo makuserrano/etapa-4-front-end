@@ -13,16 +13,7 @@ const Main = () => {
         className="main-background__img"
       />
     </div>
-    <section className="section-cards">
-      <header className="section-cards__header">
-        <h1>Nuestros productos</h1>
-        <p>Se encontraron X productos</p>
-      </header>
-
-      {/* <div className="cards-container" id="container-cards">
-  
-      </div> */}
-    </section>
+   
   </main>
   )
 }

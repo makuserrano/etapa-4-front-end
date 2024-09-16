@@ -1,0 +1,76 @@
+table.tabla-carrito {
+  border-collapse: collapse;
+  width: 95%;
+  margin: 1rem auto;
+  background-color: #f2f2f2;
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+  background-color: var(--color-primary);
+  background-color: #f2f2f2;
+  }
+  /* ListadoCarrito.scss */
+
+button {
+    color:white;
+    background-color:   #007bff; /* Color de fondo del botón */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    margin: 5px auto; /* Espaciado externo y centrado horizontalmente */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 16px; /* Tamaño de la fuente */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+    width: auto; /* Ancho completo del contenedor */
+    display: block; /* Hace que el botón sea un elemento de bloque para ocupar todo el ancho */
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Color de fondo del botón al pasar el ratón */
+  }
+  
+  button:focus {
+    outline: none; /* Elimina el contorno de enfoque */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Agrega una sombra de enfoque */
+  }
+  
+
+}
+
+/* ListadoCarrito.scss */
+
+.buttons {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    margin: 10px auto; /* Espaciado externo superior e inferior, sin espaciado lateral */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 16px; /* Tamaño de la fuente */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+    width: 20%; /* Ancho completo del contenedor */
+    display: block; /* Hace que el botón sea un elemento de bloque para ocupar todo el ancho */
+    
+  }
+  
+  .buttons:hover {
+    background-color: #0056b3; /* Color de fondo del botón al pasar el ratón */
+  }
+  
+  .buttons:focus {
+    outline: none; /* Elimina el contorno de enfoque */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Agrega una sombra de enfoque */
+  }
+
+  .h1-listado-carrito{
+    color: white;
+    margin-left:3rem;
+  }
+  

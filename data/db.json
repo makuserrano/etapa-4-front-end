@@ -3,50 +3,89 @@
     {
       "id": 1,
       "nombre": "Opti lube",
+      "marca": "Apple",
+      "precio": 250.5,
+      "envio": false,
+      "stock": "4444",
       "foto": "img/products/producto1.png",
-      "descripcion": " Preserve es un antioxidante."
+      "detalles": " Preserve es un antioxidante."
     },
     {
       "id": 2,
       "nombre": "Filtros Wega",
+      "marca": "Apple",
+      "stock": "4444",
+      "envio": false,
+      "precio": 250.5,
       "foto": "img/products/producto2.png",
-      "descripcion": " Toyota Hilux 2.8td"
+      "detalles": " Toyota Hilux 2.8td"
+      
     },
     {
       "id": 3,
+      "precio": 250.5,
+      "marca": "Apple",
+      "stock": "4444",
+      "envio": false,
       "nombre": "STP OIL",
+      "categoria": "celulares",
       "foto": "img/products/producto6.png",
-      "descripcion": "Tratamiento para aceite."
+      "detalles": "Tratamiento para aceite."
     },
     {
       "id": 4,
+      "precio": 250.5,
+      "stock": "4444",
+      "marca": "Apple",
       "nombre": "YPF GRASA",
-      "foto": "img/products/producto3.png",
-      "descripcion": "Lubricante que soporte grandes cargas"
+      "categoria": "celulares",  
+      "envio": false,
+      "detalles": "Lubricante que soporte grandes cargas"
+
     },
     {
       "id": 5,
+      "categoria": "celulares",
+      "precio": 250.5,
+      "stock": "4444",
+      "envio": false,
       "nombre": "kit aceite mobil1",
       "foto": "img/products/producto4.png",
-      "descripcion": "protección superior."
+      "marca": "Apple",
+      "detalles": "protección superior."
     },
     {
       "id": 6,
-      "nombre": "Barril aceite shell",
+      "precio": 250.5,
+      "categoria": "celulares",
+      "stock": "4444",
+      "envio": false,
+
+      "marca": "Apple",
       "foto": "img/products/producto5.png",
-      "descripcion": "Rendimiento y protección superior para tu motor."
+      "detalles": "Rendimiento y protección superior para tu motor."
     },
     {
       "id": 7,
+      "categoria": "celulares",
+      "stock": "4444",
+      "marca": "Apple",
+      "precio": 250.5,
+      "envio": false,
       "nombre": "Jack oil stop leak",
       "foto": "img/products/producto7.png",
-      "descripcion": "stop leak para prevenir y reparar fugas."
+      "detalles": "stop leak para prevenir y reparar fugas."
     },
     {
       "id": 8,
+      "categoria": "celulares",
+      "marca": "Apple",
+      "envio": false,
+      "stock": "4444",
+      "precio": 250.5,
       "nombre": "Star Racing Agua Desmineralizada",
       "foto": "img/products/producto8.png",
-      "descripcion": "Agua destilada para radiador."
+      "detalles": "Agua destilada para radiador."
     }
   ],
   "carrito": [

@@ -1,71 +1,58 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+; /* Ajusta los colores a tu estilo */
 .footer {
-    color: var(--color-primary);
-    padding: 8px 0;
-    display: flex;
-    align-items: center;
-    background-color: white;
-    justify-content: center;
-    gap:2rem;
-    font-size: .9rem;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  margin-top: auto; /* Esto asegura que el footer esté al final */
+}
 
-  }
-  
-  .footer-inner {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 2rem;
-    
-    
-  }
-  
-  .footer-logo img {
-    width:100px;
-  }
-  
-  .footer-links ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: center;
-  }
-  
-  .footer-links ul li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-  
-  .footer-links ul li a {
-    color: var(--color-primary);
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
 
-    text-decoration: none;
-    font-size: .9rem;
-  }
-  
-  .footer-links ul li a:hover {
-    text-decoration: underline;
-  }
-  
-  .footer-contact {
-    flex: 1;
-    text-align: center;
-    p:first-of-type{
-    }
-  }
-  
-  .footer-bottom {
-    text-align: center;
-    margin-top: 10px;
-  }
+.footer-logo img {
+  max-width: 100px;
+}
 
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
 
-  @media (max-width: 576px) {
-    .footer-inner {
-      flex-direction: column; /* Coloca los elementos en columna en pantallas pequeñas */
-      text-align: center;
-    }
-  
-    .footer-links ul li {
-      display: block;
-      margin: 10px 0;
-    }
-    }
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-contact p {
+  margin: 5px 0;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+  font-size: 0.9em;
+}

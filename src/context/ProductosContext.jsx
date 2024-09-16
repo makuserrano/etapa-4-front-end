@@ -52,7 +52,7 @@ const ProductosProvider = ( { children} ) => {
     }
 
     const actualizarProductoContext = async (productoEditado) => {
-        
+        // console.log(productoEditado)
         try {
 
             const options = {
@@ -61,7 +61,8 @@ const ProductosProvider = ( { children} ) => {
                 body: JSON.stringify(productoEditado)
             }
 
-            const urlEdicion = url + productoEditado.id 
+            const urlEdicion = url + productoEditado.id // http://local.../productos/9
+
             const editedProduct = await helperPeticionesHttp(urlEdicion, options)
 
             const nuevoEstadoProductos = productos.map( 
@@ -86,7 +87,7 @@ const ProductosProvider = ( { children} ) => {
 
     return <ProductosContext.Provider value={data}>{ children }</ProductosContext.Provider>
 }
-
+// ! 3. Exportamos el contexto y provider
 
 export { ProductosProvider }
 export default ProductosContext

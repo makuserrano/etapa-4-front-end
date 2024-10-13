@@ -9,7 +9,9 @@ const ListadoCarrito = () => {
 
   const handleComprar = () => {
     console.log('Comprando...')
-    guardarCarritoContext()
+    //guardar producto en el back. y el localstorage.
+    guardarCarritoContext(carrito) //exito
+    //1. limpiarlo carrito (llamar al contexto (limpiarCarritoContext))
   }
 
   const handleLimpiarCarrito = () => {

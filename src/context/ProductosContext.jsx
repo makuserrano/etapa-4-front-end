@@ -124,7 +124,7 @@ const ProductosProvider = ({ children }) => {
 
   return (
     <ProductosContext.Provider value={data}>
-      {children}
+      { children }
     </ProductosContext.Provider>
   );
 };

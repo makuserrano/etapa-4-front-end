@@ -47,7 +47,7 @@ const ProductosProvider = ({ children }) => {
         setProductos([...productos, newProducto]);
     } catch (error) {
         console.error("[crearProductoContext]", error);
-        alert("Ocurrió un error al guardar el producto."); /
+        alert("Ocurrió un error al guardar el producto."); 
     }
 };
 

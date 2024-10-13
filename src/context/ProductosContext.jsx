@@ -44,9 +44,10 @@ const ProductosProvider = ({ children }) => {
 
         const newProducto = await helperPeticionesHttp(url, options);
         console.log(newProducto);
-        setProductos([...productos, newProducto]); 
+        setProductos([...productos, newProducto]);
+    } catch (error) {
         console.error("[crearProductoContext]", error);
-        alert("Ocurrió un error al guardar el producto."); // Mensaje de error general
+        alert("Ocurrió un error al guardar el producto."); /
     }
 };
 
@@ -78,7 +79,7 @@ const ProductosProvider = ({ children }) => {
         method: "DELETE",
       };
 
-      const urlEliminacion = `${url}/${idProducto}`; /
+      const urlEliminacion = `${url}/${idProducto}`; 
 
       await helperPeticionesHttp(urlEliminacion, options);
 

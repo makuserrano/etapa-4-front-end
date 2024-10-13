@@ -2,52 +2,61 @@ import { createContext, useEffect, useState } from "react";
 import { helperPeticionesHttp } from "../helpers/helper-peticiones-http";
 
 // ! CREANDO CONTEXTO
-// ! 1. Creamos el contexto
 const ProductosContext = createContext();
+
 // ! 2. Armamos el provider
 const ProductosProvider = ({ children }) => {
-  const url = import.meta.env.VITE_BACKEND_PRODUCTOS;
+  const url = import.meta.env.VITE_BACKEND_PRODUCTOS; // URL del backend
   const [productos, setProductos] = useState(null);
   const [productoAEditar, setProductoAEditar] = useState(null);
 
   useEffect(() => {
-    getAllProductos();
+    getAllProductos(); // Cargamos todos los productos al iniciar
   }, []);
 
   const getAllProductos = async () => {
     try {
       const prods = await helperPeticionesHttp(url, {});
-
-      // console.log(prods)
-      setProductos(prods);
+      setProductos(prods); // Guardamos los productos en el estado
     } catch (error) {
       console.error("[getAllProductos]", error);
     }
   };
 
+  
   const crearProductoContext = async (nuevoProducto) => {
-    try {
-      // console.log(nuevoProducto)
-
-      const options = {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(nuevoProducto),
-      };
-
-      const newProducto = await helperPeticionesHttp(url, options);
-
-      console.log(newProducto);
-
-      setProductos([...productos, newProducto]);
-    } catch (error) {
-      console.error("[crearProductoContext]", error);
+    // Validaciones antes de crear el producto
+    if (nuevoProducto.nombre.length < 2) {
+        alert("El nombre debe tener al menos 2 caracteres.");
+        return; // Salimos si no se cumple la validación
     }
-  };
-  //ACTUALIZQAR PRODUCTO
+    if (nuevoProducto.descripcion.length < 2) {
+        alert("La descripción debe tener al menos 2 caracteres.");
+        return; // Salimos si no se cumple la validación
+    }
+    if (nuevoProducto.precio < 0) {
+        alert("El precio debe ser un número positivo.");
+        return; // Salimos si el precio es negativo
+    }
+
+    try {
+        const options = {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(nuevoProducto),
+        };
+
+        const newProducto = await helperPeticionesHttp(url, options);
+        console.log(newProducto);
+        setProductos([...productos, newProducto]); // Agregamos el nuevo producto al estado
+    } catch (error) {
+        console.error("[crearProductoContext]", error);
+        alert("Ocurrió un error al guardar el producto."); // Mensaje de error general
+    }
+};
+
 
   const actualizarProductoContext = async (productoEditado) => {
-    // console.log(productoEditado)
     try {
       const options = {
         method: "PUT",
@@ -55,40 +64,16 @@ const ProductosProvider = ({ children }) => {
         body: JSON.stringify(productoEditado),
       };
 
-      const urlEdicion = url + productoEditado.id; // http://local.../productos/9
+      const urlEdicion = `${url}/${productoEditado.id}`; // URL para editar el producto
 
       const editedProduct = await helperPeticionesHttp(urlEdicion, options);
 
       const nuevoEstadoProductos = productos.map((producto) =>
         producto.id === editedProduct.id ? editedProduct : producto
       );
-      setProductos(nuevoEstadoProductos);
+      setProductos(nuevoEstadoProductos); // Actualizamos el estado
     } catch (error) {
       console.error("[actualizarProductoContext]", error);
-    }
-  };
-
-  //EDITAR PRODUCTO
-
-  const editarProductoContext = async (productoEditado) => {
-    try {
-      const options = {
-        method: "PUT",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(productoEditado),
-      };
-
-      const urlEdicion = `${url}/${productoEditado.id}`;
-
-      const editedProduct = await helperPeticionesHttp(urlEdicion, options);
-
-      const nuevoEstadoProductos = productos.map((producto) =>
-        producto.id === editedProduct.id ? editedProduct : producto
-      );
-
-      setProductos(nuevoEstadoProductos);
-    } catch (error) {
-      console.error("[editarProductoContext]", error);
     }
   };
 
@@ -98,11 +83,11 @@ const ProductosProvider = ({ children }) => {
         method: "DELETE",
       };
 
-      const urlEliminacion = url + idProducto;
+      const urlEliminacion = `${url}/${idProducto}`; // URL para eliminar el producto
 
       await helperPeticionesHttp(urlEliminacion, options);
 
-      // Actualizar el estado eliminando el producto
+      // Actualizamos el estado eliminando el producto
       const nuevosProductos = productos.filter(
         (producto) => producto.id !== idProducto
       );
@@ -117,18 +102,17 @@ const ProductosProvider = ({ children }) => {
     crearProductoContext,
     actualizarProductoContext,
     eliminarProductoContext,
-    editarProductoContext,
     productoAEditar,
     setProductoAEditar,
   };
 
   return (
     <ProductosContext.Provider value={data}>
-      { children }
+      {children}
     </ProductosContext.Provider>
   );
 };
-// ! 3. Exportamos el contexto y provider
 
+// ! 3. Exportamos el contexto y provider
 export { ProductosProvider };
 export default ProductosContext;

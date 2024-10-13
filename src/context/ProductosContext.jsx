@@ -23,20 +23,16 @@ const ProductosProvider = ({ children }) => {
     }
   };
 
-  
+
   const crearProductoContext = async (nuevoProducto) => {
-    // Validaciones antes de crear el producto
     if (nuevoProducto.nombre.length < 2) {
         alert("El nombre debe tener al menos 2 caracteres.");
-        return; // Salimos si no se cumple la validación
     }
     if (nuevoProducto.descripcion.length < 2) {
         alert("La descripción debe tener al menos 2 caracteres.");
-        return; // Salimos si no se cumple la validación
     }
     if (nuevoProducto.precio < 0) {
         alert("El precio debe ser un número positivo.");
-        return; // Salimos si el precio es negativo
     }
 
     try {
@@ -48,8 +44,7 @@ const ProductosProvider = ({ children }) => {
 
         const newProducto = await helperPeticionesHttp(url, options);
         console.log(newProducto);
-        setProductos([...productos, newProducto]); // Agregamos el nuevo producto al estado
-    } catch (error) {
+        setProductos([...productos, newProducto]); 
         console.error("[crearProductoContext]", error);
         alert("Ocurrió un error al guardar el producto."); // Mensaje de error general
     }
@@ -64,14 +59,14 @@ const ProductosProvider = ({ children }) => {
         body: JSON.stringify(productoEditado),
       };
 
-      const urlEdicion = `${url}/${productoEditado.id}`; // URL para editar el producto
+      const urlEdicion = `${url}/${productoEditado.id}`; 
 
       const editedProduct = await helperPeticionesHttp(urlEdicion, options);
 
       const nuevoEstadoProductos = productos.map((producto) =>
         producto.id === editedProduct.id ? editedProduct : producto
       );
-      setProductos(nuevoEstadoProductos); // Actualizamos el estado
+      setProductos(nuevoEstadoProductos); 
     } catch (error) {
       console.error("[actualizarProductoContext]", error);
     }
@@ -83,11 +78,10 @@ const ProductosProvider = ({ children }) => {
         method: "DELETE",
       };
 
-      const urlEliminacion = `${url}/${idProducto}`; // URL para eliminar el producto
+      const urlEliminacion = `${url}/${idProducto}`; /
 
       await helperPeticionesHttp(urlEliminacion, options);
 
-      // Actualizamos el estado eliminando el producto
       const nuevosProductos = productos.filter(
         (producto) => producto.id !== idProducto
       );

@@ -8,6 +8,7 @@ const Tabla = () => {
   const { productos } = useContext(ProductosContext)
   console.log(productos)
   return (
+    <div className="table-alta-container">
     <table className="tabla-alta">
       <thead>
         <tr>
@@ -34,6 +35,7 @@ const Tabla = () => {
       </tbody>
 
     </table>
+    </div>
   )
 }
 
